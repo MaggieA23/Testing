@@ -70,6 +70,42 @@ namespace BankingSystem.Tests
             }
 
         }
+        [Test]
+        public void DepositShouldIncreaseBalance()
+        {
+            {
+                int id = 123;
+                decimal amountDeposit = 2000m;
+                BankAccount account = new BankAccount(id);
+
+                account.Deposit(amountDeposit);
+
+                Assert.AreEqual(amountDeposit, account.Balance);
+            }
+        }
+        [Test]
+        public void ConstructorShouldSetZeroBalance()
+        {
+            {
+                int id = 123;
+              
+                BankAccount account = new BankAccount(id);
+
+                Assert.AreEqual(0, account.Balance);
+            }
+        }
+        [Test]
+        public void IdShouldBeSet()
+        {
+            {
+                int id = 123;
+
+                BankAccount account = new BankAccount(id);
+
+                Assert.AreEqual(id, account.Id);
+            }
+        }
+
 
 
     }
