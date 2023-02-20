@@ -47,5 +47,36 @@ namespace BankingSystem
             }
             this.Balance += amount;
         }
+        public void Credit(decimal cash)
+        {
+            if (cash <= 0)
+            {
+                throw new InvalidOperationException("“The amount must beposistive!");
+            }
+            this.Balance += cash;
+        }
+        public void Increase(double percent)
+        {
+            if (percent <= 0)
+            {
+                throw new InvalidOperationException("The percent must be positive!");
+            }
+            this.Balance =this.Balance*(decimal)percent;
+        }
+        public void Bonus()
+        {
+            if (this.balance<2000 && this.balance>1000)
+            {
+                this.Balance += 100;
+            }
+            else if(this.Balance>=2000 && this.Balance<=3000)
+            {
+                this.Balance  += 200;
+            }
+            else
+            {
+                this.Balance += 300;
+            }
+        }
     }
 }
