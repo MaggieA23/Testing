@@ -8,17 +8,40 @@ namespace BankingSystem
 {
     public class BankAccount
     {
-        public BankAccount(int id, decimal balance=0)
+        private decimal balance;
+
+        public BankAccount(int id, decimal balance = 0)
         {
             this.Id = id;
             this.Balance = balance;
-        }   
+        }
 
-        public int Id { get; set; }
-        public decimal Balance { get; set; }
+        public int Id {
+            get { return Id; }
+            set
+            {
+                if (value<=0)
+                {
+                    throw new ArgumentException("Id must be possitive");
+                }
+                this.balance = value;
+            }
+        }
+        public decimal Balance 
+        {
+            get{ return balance; }
+            set
+            {
+                if (value<0)
+                {
+                    throw new ArgumentException("Balance must be possitive or zero");
+                }
+                this.balance = value;
+            }
+        }
         public void Deposit(decimal amount)
         {
-            if(amount<=0)
+            if (amount <= 0)
             {
                 throw new InvalidOperationException("Negative amount");
             }
